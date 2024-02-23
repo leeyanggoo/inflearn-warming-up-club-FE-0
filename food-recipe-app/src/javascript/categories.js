@@ -70,9 +70,6 @@ export async function setCategories(container) {
 
   // Event Delegation
   foodNavigation.addEventListener('click', async (event) => {
-    console.log(event.target);
-    console.log(event.currentTarget);
-
     const targetElement = event.target;
 
     // closest() 메서드는 주어진 CSS 선택자와 일치하는 요소를 찾을 때까지,

@@ -1,0 +1,70 @@
+/* element */
+body {
+  margin: 0 auto;
+}
+p {
+  margin: 0;
+}
+
+/* id */
+#wrap {
+  width: 100dvw;
+  height: 100dvh;
+}
+
+/* class */
+.flex {
+  display: flex;
+}
+.flex-col {
+  flex-direction: column;
+}
+.flex-row {
+  flex-direction: row;
+}
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+.flex-between {
+  justify-content: space-between;
+  align-items: center;
+}
+.gap-20 {
+  gap: 20px;
+}
+.gap-40 {
+  gap: 40px;
+}
+.font-30 {
+  font-size: 30px;
+}
+.font-50 {
+  font-size: 50px;
+}
+.btn {
+  min-width: 80px;
+  min-height: 80px;
+}
+.right-45deg {
+  transform: rotate(45deg);
+  display: inline-block;
+}
+.left-45deg {
+  transform: rotate(-45deg);
+  display: inline-block;
+}
+
+/* emoji */
+.common::after {
+  content: '\26AA';
+}
+.win::after {
+  content: '\2B55';
+}
+.lose::after {
+  content: '\274C';
+}
+.draw::after {
+  content: '\1F4A6';
+}

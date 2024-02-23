@@ -11,7 +11,8 @@ figure {
 figcaption {
   text-align: center;
 }
-p {
+p,
+h1 {
   margin: 0;
 }
 #wrap {
@@ -27,6 +28,7 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 20px;
 }
 /* nav */
 #food-navigation {

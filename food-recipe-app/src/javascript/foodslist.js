@@ -35,8 +35,13 @@ export async function setFoodList(strCategory) {
 
   const foodListElement = document.getElementById('food-list');
   const foodListItem = document.querySelectorAll('.food-list-item');
-  foodListItem.forEach((item) => item.remove());
+  // foodListItem.forEach((item) => item.remove());
   // foodListElement.innerHTML = '';
+
+  // replaceChildren() provides a very convenient mechanism for emptying a node of all its children.
+  // https://stackoverflow.com/questions/13798796/what-is-the-best-way-to-empty-a-node-in-javascript
+  // https://developer.mozilla.org/en-US/docs/Web/API/Element/replaceChildren#emptying_a_node
+  foodListElement.replaceChildren();
 
   foodList.map(async (food) => {
     const { idMeal, strMeal, strMealThumb } = food;

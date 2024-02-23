@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>👊Rock 🖐Paper ✌Scissors App</title>
+    <link rel="stylesheet" href="./src/css/style.css" />
+  </head>
+  <body>
+    <div id="wrap" class="flex flex-col flex-center gap-40">
+      <header>
+        <h1>👊Rock 🖐Paper ✌Scissors</h1>
+      </header>
+      <main class="flex flex-col flex-center gap-40">
+        <div class="flex flex-row gap-40">
+          <div id="player" class="flex flex-col flex-center gap-20">
+            <div class="flex flex-row flex-center">
+              <span class="font-50">🧑</span>
+              <span class="font-30 right-45deg" id="player-weapon"></span>
+            </div>
+            <strong id="player-score" class="font-30">0</strong>
+          </div>
+          <div class="flex flex-col flex-center gap-20">
+            <p class="font-50">vs</p>
+            <span class="font-30" id="current-result"></span>
+          </div>
+          <div id="robot" class="flex flex-col flex-center gap-20">
+            <div class="flex flex-row flex-center">
+              <span class="font-30 left-45deg" id="robot-weapon"></span>
+              <span class="font-50">🤖</span>
+            </div>
+            <strong id="robot-score" class="font-30">0</strong>
+          </div>
+        </div>
+        <div id="count-wrap" class="flex flex-row flex-center font-30"></div>
+        <div class="flex flex-row gap-40" id="btn-wrap">
+          <button id="rock" class="font-50 btn">👊</button>
+          <button id="paper" class="font-50 btn">🖐</button>
+          <button id="scissors" class="font-50 btn">✌</button>
+        </div>
+      </main>
+    </div>
+  </body>
+  <script type="module" src="./src/javascript/main.js"></script>
+</html>

@@ -1,9 +1,8 @@
-#### [인프런 워밍업 클럽 FE 0기] 미션1 - 음식 메뉴 앱
+#### [인프런 워밍업 클럽 FE 0기] 미션2 - 가위 바위 보 앱
 
-# 🍝 food-recipe-app
+# 👊Rock-🖐Paper-✌Scissors-app
 
-- API from [TheMealDB](https://www.themealdb.com)
-- [Inflearn Blog](https://www.inflearn.com/blogs/6660)
+- [Inflearn Blog](https://www.inflearn.com/blogs/6742)
 
 ## 개요
 
@@ -19,12 +18,6 @@
 
 ## Method
 
-> Pattern
->
-> - Event Delegation
->
-> ---
->
 > Data
 >
 > - fetch()
@@ -47,6 +40,12 @@
 > - matches()
 > - closest()
 > - replaceChildren()
+>
+> ---
+>
+> Pattern
+>
+> - Event Delegation
 
 ## Demo
 
