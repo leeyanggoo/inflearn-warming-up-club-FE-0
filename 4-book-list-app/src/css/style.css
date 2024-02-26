@@ -1,0 +1,150 @@
+/* element */
+* {
+  transition: background-color 0.5s;
+}
+body {
+  margin: 0 auto;
+}
+h1,
+p {
+  margin: 0;
+}
+
+button.delete {
+  border-radius: 50%;
+  outline: none;
+  border: 1px solid black;
+  cursor: pointer;
+}
+button.delete:hover {
+  transform: scale(0.95);
+}
+
+button.submit {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  background-color: #ddd;
+}
+button.submit:hover {
+  background-color: #eee;
+  color: #000;
+  transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  border: 1px solid #000;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+}
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+}
+input:focus {
+  border-color: #66afe9;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset,
+    0 0 8px rgba(102, 175, 233, 0.6);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  border: 1px solid #66afe9;
+}
+
+table,
+th,
+td {
+  border-bottom: 2px solid #eee;
+  border-collapse: collapse;
+  text-align: left;
+}
+th,
+td {
+  padding: 10px;
+}
+
+/* id */
+#wrap {
+  width: 100dvw;
+  height: 100dvh;
+}
+
+/* class */
+.flex {
+  display: flex;
+}
+.flex-col {
+  flex-direction: column;
+}
+.flex-row {
+  flex-direction: row;
+}
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+.flex-between {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.grid {
+  display: grid;
+  width: 100%;
+  gap: 20px;
+  grid-template-columns: 1fr 1fr;
+}
+.gap-10 {
+  gap: 10px;
+}
+.gap-20 {
+  gap: 20px;
+}
+.gap-40 {
+  gap: 40px;
+}
+.font-30 {
+  font-size: 30px;
+}
+.font-50 {
+  font-size: 50px;
+}
+
+.row-container {
+  width: 1380px;
+}
+
+.row-container-md {
+  width: 1080px;
+}
+
+.row-container-sm {
+  width: 600px;
+}
+
+p.info {
+  width: 100%;
+  padding: 4px 16px;
+  border-radius: 4px;
+  transition: opacity 1s;
+  box-sizing: border-box;
+  opacity: 0;
+}
+
+p.success {
+  background-color: lightgreen;
+}
+
+p.error {
+  background-color: lightcoral;
+}

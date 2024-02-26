@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>📚 Book List App</title>
+    <link rel="stylesheet" href="./src/css/style.css" />
+  </head>
+  <body style="background-color: lightgray">
+    <div id="wrap" class="flex flex-col flex-center gap-20">
+      <header>
+        <h1>📚 Book List App</h1>
+      </header>
+      <main
+        class="flex flex-col flex-center gap-20 row-container-sm"
+        style="background-color: white; border-radius: 30px; padding: 30px"
+      >
+        <div
+          id="info-wrap"
+          style="width: 100%"
+          class="flex flex-center flex-col gap-10"
+        ></div>
+        <div class="flex flex-col flex-center gap-10" style="width: 100%">
+          <div style="width: 100%">
+            <label for="book-name">Book Name</label>
+            <input type="text" id="book-name" name="book-name" />
+          </div>
+          <div style="width: 100%">
+            <label for="book-author">Book Author</label>
+            <input type="text" id="book-author" name="book-author" />
+          </div>
+          <button type="submit" id="submit-btn" class="submit">제출하기</button>
+        </div>
+        <table style="width: 100%" id="book-list">
+          <thead id="book-list-head">
+            <tr>
+              <th>Book Name</th>
+              <th>Book Author</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="book-list-body"></tbody>
+        </table>
+      </main>
+    </div>
+  </body>
+  <script type="module" src="./src/javascript/main.js"></script>
+</html>
