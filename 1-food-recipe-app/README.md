@@ -13,8 +13,8 @@
 
 ## 목표
 
-- 문서 객체 모델(The Document Object Model, 이하 DOM)의 메소드(methods)를 이용해 요소(element)에 **접근**하고 **생성**하고 **교체**하기
-- **이벤트 리스너(Event Listener)** 메소드를 이용해 요소에 이벤트를 등록하고 이벤트 객체 이용하기
+- 문서 객체 모델(The Document Object Model, 이하 DOM)의 메서드(methods)를 이용해 요소(element)에 **접근**하고 **생성**하고 **교체**하기
+- **이벤트 리스너(Event Listener)** 메서드를 이용해 요소에 이벤트를 등록하고 이벤트 객체 이용하기
 - 메뉴 데이터를 **Fetch API**를 사용해 불러오기
 
 ## Method

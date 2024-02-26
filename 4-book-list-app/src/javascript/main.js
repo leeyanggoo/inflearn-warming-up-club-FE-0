@@ -33,8 +33,15 @@
       bookDeleteBtn.textContent = 'X';
       bookDeleteBtn.addEventListener('click', () => {
         addSubmitInfo('success', '✅ Book deleted to list successfully');
-        bookList.splice(bookList.indexOf(book), 1);
+        // bookList.splice(bookList.indexOf(book), 1);
+        const index = bookList.findIndex(
+          (item) => item.name === book.name && item.author === book.author
+        );
+        if (index !== -1) {
+          bookList.splice(index, 1);
+        }
         bookTr.remove();
+        console.log(bookList);
       });
 
       bookDeleteTd.appendChild(bookDeleteBtn);
@@ -83,6 +90,7 @@
   }
 
   submitBtn.addEventListener('click', () => {
+    console.log(`bookList::`, bookList);
     const bookName = document.getElementById('book-name').value;
     const bookAuthor = document.getElementById('book-author').value;
     const book = new Book(bookName, bookAuthor);

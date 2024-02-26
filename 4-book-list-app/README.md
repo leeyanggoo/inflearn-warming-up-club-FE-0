@@ -13,7 +13,7 @@
 
 - **class** 를 이용해 책 리스트 객체 활용하기
 - **setTimeout** 을 이용해 DOM 요소 관리하기
-- 배열 메소드(**some()**, **splice()**)를 이용해 조건에 맞는 코드 실행 및 배열 관리
+- 배열 메서드(**some()**, **splice()**)를 이용해 조건에 맞는 코드 실행 및 배열 관리
 
 ## Method
 
@@ -27,6 +27,7 @@
 >
 > - Array.prototype.some()
 > - Array.prototype.splice()
+> - Array.prototype.indexOf()
 >
 > ---
 >
