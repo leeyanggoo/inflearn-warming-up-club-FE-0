@@ -1,8 +1,8 @@
 (function () {
+  const operatorArray = ['+', '-', '*'];
   const quiz = document.querySelector('#quiz');
   const btnWrap = document.querySelector('#quiz-btn-wrap');
   const nextBtnWrap = document.querySelector('#next-btn-wrap');
-  const operatorArray = ['+', '-', '*'];
   const emoji = document.querySelector('#emoji');
 
   function makeQuiz() {
@@ -19,16 +19,16 @@
     // 정답 저장
     const correct = calculator(number1, number2, operator);
 
-    // 오답 3개 만들기
-    const wrongArray = makeWrongAnswer(correct);
+    // 정답 + 오답 3개
+    const optionArray = makeOptions(correct);
     for (let i = 0; i < 4; i++) {
       const btn = document.createElement('button');
-      btn.innerText = wrongArray[i];
+      btn.innerText = optionArray[i];
       btnWrap.appendChild(btn);
     }
   }
 
-  function makeWrongAnswer(correct) {
+  function makeOptions(correct) {
     const optionArray = [];
     const range = 10; // 정답 범위
 
