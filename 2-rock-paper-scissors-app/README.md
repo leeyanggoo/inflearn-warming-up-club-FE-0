@@ -29,6 +29,6 @@
 
 ## Demo
 
-![Alt text](/rock-paper-scissors-app/src/img/rock-paper-scissors.gif)
+![Alt text](/2-rock-paper-scissors-app/src/img/rock-paper-scissors.gif)
 
 Record by [ScreenToGif](https://www.screentogif.com/)

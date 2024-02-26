@@ -50,6 +50,6 @@
 
 ## Demo
 
-![Alt text](/food-recipe-app/src/img/food-recipe-app.gif)
+![Alt text](/1-food-recipe-app/src/img/food-recipe-app.gif)
 
 Record by [ScreenToGif](https://www.screentogif.com/)
