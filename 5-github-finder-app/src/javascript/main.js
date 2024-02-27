@@ -1,23 +1,12 @@
 const searchBtn = document.getElementById('search-btn');
 const searchInput = document.getElementById('search-input');
+const form = document.querySelector('form');
 const url = 'https://api.github.com/users';
 let prevInputValue;
-searchBtn.addEventListener('click', async (event) => {
-  event.preventDefault();
-  if (prevInputValue === searchInput.value) {
-    return;
-  }
-  await loadUser(searchInput.value);
-});
 
-searchInput.addEventListener('keydown', async (event) => {
-  if (event.key === 'Enter') {
-    event.preventDefault();
-    if (prevInputValue === searchInput.value) {
-      return;
-    }
-    await loadUser(searchInput.value);
-  }
+form.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  loadUser(searchInput.value);
 });
 
 async function loadUser(input) {
