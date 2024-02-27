@@ -5,19 +5,51 @@
 body {
   margin: 0 auto;
 }
-p {
+p,
+h1,
+h2,
+h3 {
   margin: 0;
 }
+h1 {
+  font-size: 1.5rem;
+  color: #fff;
+  font-weight: normal;
+}
+h2 {
+  font-size: 1.8rem;
+  color: #333;
+}
+h3 {
+  font-size: 1.5rem;
+  color: #888;
+  font-weight: normal;
+}
 button {
-  font-size: 30px;
   width: 100%;
+  padding: 10px 20px;
+  background-color: #1976d2;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+}
+button:hover {
+  background-color: #1976d290;
+}
+button:disabled {
+  background-color: #ddd;
+  cursor: default;
+}
+header {
+  padding: 20px;
+  background-color: #1976d2;
 }
 
 /* id */
-#wrap {
-  width: 100dvw;
-  height: 100dvh;
-}
+/* #wrap {
+  width: 100%;
+} */
 
 /* class */
 .flex {
@@ -44,7 +76,9 @@ button {
   gap: 20px;
   grid-template-columns: 1fr 1fr;
 }
-
+.gap-10 {
+  gap: 10px;
+}
 .gap-20 {
   gap: 20px;
 }
@@ -60,4 +94,73 @@ button {
 
 .row-container {
   width: 1380px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+}
+input:focus {
+  border-color: #66afe9;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset,
+    0 0 8px rgba(102, 175, 233, 0.6);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  border: 1px solid #66afe9;
+}
+
+.container {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 16px;
+}
+
+.info-count {
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #66afe9;
+  color: #fff;
+  font-size: 0.875rem;
+}
+
+/* mui */
+.primary-main {
+  color: #1976d2;
+}
+.primary-dark {
+  color: #1565c0;
+}
+.primary-light {
+  color: #42a5f5;
+}
+.secondary-light {
+  color: #ba68c8;
+}
+.success-light {
+  color: #4caf50;
+}
+.warning-light {
+  color: #ff9800;
+}
+.bg-primary-main {
+  background-color: #1976d2;
+}
+.bg-primary-dark {
+  background-color: #1565c0;
+}
+.bg-secondary-light {
+  background-color: #ba68c8;
+}
+.bg-primary-light {
+  background-color: #42a5f5;
+}
+.bg-success-light {
+  background-color: #4caf50;
+}
+.bg-warning-light {
+  background-color: #ff9800;
 }

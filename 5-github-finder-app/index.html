@@ -1,25 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>🤔 Quiz App</title>
-    <link rel="stylesheet" href="./src/css/style.css" />
-  </head>
-  <body style="background-color: lightgray">
-    <div id="wrap" class="flex flex-col flex-center gap-40">
-      <header>
-        <h1><span id="emoji">🤔</span> Quiz App</h1>
-      </header>
-      <main
-        class="flex flex-col flex-center gap-40 row-container"
-        style="background-color: white; border-radius: 30px; padding: 30px"
-      >
-        <p id="quiz" class="font-50">문제</p>
-        <div id="quiz-btn-wrap" class="grid"></div>
-        <div id="next-btn-wrap"></div>
-      </main>
-    </div>
-  </body>
-  <script type="module" src="./src/javascript/main.js"></script>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GitHub Finder</title>
+  <link rel="stylesheet" href="./src/css/style.css" />
+</head>
+
+<body>
+  <div id="wrap" class="flex flex-col">
+    <header>
+      <h1>GitHub Finder</h1>
+    </header>
+    <main class="flex flex-col gap-20" style="margin: 10px;">
+      <div class="flex flex-col gap-10 container">
+        <h2>Search GitHub User</h2>
+        <h3>Enter a user name to fetch a user profile and repos</h3>
+        <form class="flex flex-row gap-10">
+          <input id="search-input" type="text" style="margin: 0;">
+          <button id="search-btn" type="button" style="width: 20%; padding: 5px 10px; border-radius: 5px;">Search
+            User</button>
+        </form>
+      </div>
+      <div class="flex flex-row gap-20 container">
+        <div class="flex flex-col gap-10">
+          <img id="avatar" src="./src/img/default.png" data-src="" alt="avatar"
+            style="max-width: 300px; max-height: 300px; object-fit: cover;">
+          <button id="view-profile" disabled>View Profile</button>
+        </div>
+        <div class="flex flex-col gap-40" style="width: 100%;">
+          <div class="flex flex-row gap-10">
+            <p id="public_repos" class="info-count bg-primary-light">Public Repos: <span></span></p>
+            <p id="public_gists" class="info-count bg-success-light">Public Gists: <span></span></p>
+            <p id="followers" class="info-count bg-warning-light">Followers: <span></span></p>
+            <p id="following" class="info-count bg-secondary-light">Following: <span></span></p>
+          </div>
+          <div class="flex flex-col gap-10" style="width: 100%;">
+            <p id="company" class="container">Company: <span></span></p>
+            <p id="blog" class="container">Website/Blog: <span></span></p>
+            <p id="location" class="container">Location: <span></span></p>
+            <p id="created_at" class="container">Member Since: <span></span></p>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col gap-20 container">
+        <h2>Latest Repos</h2>
+        <div id="repos-wrap" class="flex flex-col gap-10"></div>
+      </div>
+    </main>
+  </div>
+</body>
+<script type="module" src="./src/javascript/main.js"></script>
+
 </html>

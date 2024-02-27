@@ -1,113 +1,132 @@
-(function () {
-  const operatorArray = ['+', '-', '*'];
-  const quiz = document.querySelector('#quiz');
-  const btnWrap = document.querySelector('#quiz-btn-wrap');
-  const nextBtnWrap = document.querySelector('#next-btn-wrap');
-  const emoji = document.querySelector('#emoji');
-
-  function makeQuiz() {
-    btnWrap.replaceChildren();
-    nextBtnWrap.replaceChildren();
-    emoji.innerText = '🤔';
-
-    const number1 = Math.floor(Math.random() * 10);
-    const number2 = Math.floor(Math.random() * 10);
-    const operator =
-      operatorArray[Math.floor(Math.random() * operatorArray.length)];
-    quiz.innerText = `${number1} ${operator} ${number2}`;
-
-    // 정답 저장
-    const correct = calculator(number1, number2, operator);
-
-    // 정답 + 오답 3개
-    const optionArray = makeOptions(correct);
-    for (let i = 0; i < 4; i++) {
-      const btn = document.createElement('button');
-      btn.innerText = optionArray[i];
-      btnWrap.appendChild(btn);
-    }
+const searchBtn = document.getElementById('search-btn');
+const searchInput = document.getElementById('search-input');
+const url = 'https://api.github.com/users';
+let prevInputValue;
+searchBtn.addEventListener('click', async (event) => {
+  event.preventDefault();
+  if (prevInputValue === searchInput.value) {
+    return;
   }
+  await loadUser(searchInput.value);
+});
 
-  function makeOptions(correct) {
-    const optionArray = [];
-    const range = 10; // 정답 범위
-
-    for (let i = 0; i < 3; i++) {
-      let wrongAnswer;
-      do {
-        // 정답 주변의 랜덤한 오답 생성
-        wrongAnswer =
-          correct +
-          (Math.random() > 0.5 ? 1 : -1) * Math.floor(Math.random() * range);
-      } while (optionArray.includes(wrongAnswer) || wrongAnswer === correct);
-      // 이미 포함된 오답이거나 정답과 같은 경우 다시 생성
-
-      optionArray.push(wrongAnswer);
+searchInput.addEventListener('keydown', async (event) => {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    if (prevInputValue === searchInput.value) {
+      return;
     }
-    optionArray.push(correct);
-
-    // 보기 섞기
-    optionArray.sort(() => Math.random() - 0.5);
-
-    return optionArray;
+    await loadUser(searchInput.value);
   }
+});
 
-  function calculator(num1, num2, operator) {
-    switch (operator) {
-      case '+':
-        return num1 + num2;
-      case '-':
-        return num1 - num2;
-      case '*':
-        return num1 * num2;
+async function loadUser(input) {
+  prevInputValue = input;
+
+  try {
+    // const response = await fetch('./src/javascript/user.json');
+    const response = await fetch(`${url}/${input}`);
+
+    if (response.status !== 200) {
+      throw new Error('Failed to fetch user json');
     }
+
+    const json = await response.json();
+
+    setUserAvatar(json);
+    setUserInfo(json);
+
+    await loadUserRepos(json);
+  } catch (error) {
+    console.error(error);
   }
+}
 
-  function makeEvent() {
-    btnWrap.addEventListener('click', (e) => {
-      if (e.target.tagName === 'BUTTON') {
-        const answer = Number(e.target.innerText);
-        const quizArray = quiz.innerHTML.split(' ');
+function setUserAvatar(data) {
+  const avatar = document.getElementById('avatar');
+  avatar.src = data.avatar_url;
+  const viewProfileBtn = document.getElementById('view-profile');
+  viewProfileBtn.removeAttribute('disabled');
+  viewProfileBtn.setAttribute('_blank', '');
 
-        // 정답 계산(배열 값의 타입이 문자열이라 숫자로 변환)
-        const correct = calculator(
-          Number(quizArray[0]),
-          Number(quizArray[2]),
-          quizArray[1]
-        );
+  viewProfileBtn.addEventListener('click', () => {
+    window.open(data.html_url);
+  });
+}
 
-        // 정답 여부에 따른 리턴
-        if (answer === correct) {
-          document.body.style.backgroundColor = 'lightgreen';
-          emoji.innerText = '😎';
-        } else {
-          document.body.style.backgroundColor = 'lightcoral';
-          emoji.innerText = '😭';
-        }
+function setUserInfo(data) {
+  const public_repos = document
+    .getElementById('public_repos')
+    .querySelector('span');
+  const public_gists = document
+    .getElementById('public_gists')
+    .querySelector('span');
+  const followers = document.getElementById('followers').querySelector('span');
+  const following = document.getElementById('following').querySelector('span');
+  const company = document.getElementById('company').querySelector('span');
+  const blog = document.getElementById('blog').querySelector('span');
+  const location = document.getElementById('location').querySelector('span');
+  const created_at = document
+    .getElementById('created_at')
+    .querySelector('span');
 
-        // 버튼 공통
-        btnWrap.childNodes.forEach((btn) => {
-          const btnNumber = Number(btn.innerText);
-          if (btnNumber === correct) {
-            btn.style.backgroundColor = 'lightgreen';
-          } else {
-            btn.style.backgroundColor = 'lightcoral';
-          }
+  public_repos.textContent = data.public_repos;
+  public_gists.textContent = data.public_gists;
+  followers.textContent = data.followers;
+  following.textContent = data.following;
+  company.textContent = data.company;
+  blog.textContent = data.blog;
+  location.textContent = data.location;
+  created_at.textContent = data.created_at;
+}
 
-          btn.setAttribute('disabled', true);
-        });
+async function loadUserRepos(data) {
+  try {
+    const reposUrl = data.repos_url;
+    // const response = await fetch('./src/javascript/repos.json');
+    const response = await fetch(`${reposUrl}`);
 
-        const nextBtn = document.createElement('button');
-        nextBtn.innerText = 'Next';
-        nextBtn.addEventListener('click', () => {
-          document.body.style.backgroundColor = 'lightgray';
-          makeQuiz();
-        });
-        nextBtnWrap.appendChild(nextBtn);
-      }
+    if (response.status !== 200) {
+      throw new Error('Failed to fetch repos json');
+    }
+
+    const json = await response.json();
+
+    setUserRepos(json);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+function setUserRepos(data) {
+  const reposWrap = document.getElementById('repos-wrap');
+  reposWrap.replaceChildren();
+
+  for (let i = 0; i < 5; i++) {
+    const p = document.createElement('p');
+    p.className = 'container flex flex-row flex-between';
+    const link = document.createElement('a');
+    link.textContent = data[i].name;
+    link.href = data[i].html_url;
+    p.appendChild(link);
+
+    const reposInfoWrap = document.createElement('div');
+    reposInfoWrap.className = 'flex flex-row flex-between gap-10';
+    const styleArray = [
+      'bg-primary-light',
+      'bg-secondary-light',
+      'bg-secondary-light',
+    ];
+    const dataArray = ['stargazers_count', 'watchers_count', 'forks_count'];
+    const textArray = ['Stars', 'Watchers', 'Forks'];
+    styleArray.forEach((style, index) => {
+      const span = document.createElement('span');
+      span.className = `${style} info-count`;
+      span.textContent = `${textArray[index]} ${data[i][dataArray[index]]}`;
+      reposInfoWrap.appendChild(span);
     });
-  }
+    p.appendChild(reposInfoWrap);
 
-  makeQuiz();
-  makeEvent();
-})();
+    reposWrap.appendChild(p);
+  }
+}
