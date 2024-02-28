@@ -18,7 +18,7 @@ async function loadUser(input) {
     // const response = await fetch('./src/javascript/user.json');
     const response = await fetch(`${url}/${input}`);
 
-    if (response.status !== 200) {
+    if (!response.ok) {
       throw new Error('Failed to fetch user json');
     }
 
