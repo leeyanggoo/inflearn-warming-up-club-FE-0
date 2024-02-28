@@ -4,6 +4,12 @@
 
 - [Inflearn Blog](https://www.inflearn.com/blogs/6914)
 
+## Demo
+
+![Alt text](/5-github-finder-app/src/img/github-finder-app.gif)
+
+Record by [ScreenToGif](https://www.screentogif.com/)
+
 ## 개요
 
 - **인프런 워밍업 클럽 FE 0기**의 네 번째 미션인 'GitHubFinder 앱' 입니다.
@@ -50,7 +56,7 @@ response의 ok 속성은 응답의 성공 여부를 불리언 값으로 가지�
 
 응답에 성공한 response 객체를 JSON으로 사용하기 위해선 json() 메서드를 이용해 파싱해야 한다.
 
-
+<br />
 
 > **Closure** 를 이용해 Debounce Function 만들기
 
@@ -95,7 +101,7 @@ debounce 함수는 인자로 실행할 함수를 받고 자식 함수를 반환�
 
 이렇게 delay로 설정한 시간 이내에 사용자의 입력이 없을 경우 API 요청 함수를 실행하게 된다.
 
-
+<br />
 
 > ```
 > 반복적인 함수의 실행을 다루는 방법으로 디바운싱(debouncing)와 쓰로틀링(throttling)이 있다.
@@ -111,9 +117,3 @@ debounce 함수는 인자로 실행할 함수를 받고 자식 함수를 반환�
 자바스크립트의 기초를 잘 알아야 이런 라이브러리 메서드의 원리를 이해하기도 쉽고, 커스텀하기에 수월한 것 같다.
 
 (외의로 GitHub의 API 요청이 API key 없이도 되어서 신기했고, 그 덕에 조금은 수월했다. 아주 조금... 😵)
-
-## Demo
-
-![Alt text](/5-github-finder-app/src/img/github-finder-app.gif)
-
-Record by [ScreenToGif](https://www.screentogif.com/)

@@ -45,6 +45,8 @@ submitBtn.addEventListener('click', () => {
 
 책의 이름과 저자는 버튼의 클릭 이벤트로 input 요소의 value를 가져옵니다.
 
+<br />
+
 > **setTimeout** 을 이용해 DOM 요소 관리하기
 
 ```javascript
@@ -88,6 +90,8 @@ setTimeout(callback, delay)은 첫 번째 인자로 콜백 함수를 받고, 두
 
 먼저 1초 뒤에 requestAnimationFrame() 메서드를 실행하고, 0.5초 뒤에 요소를 지우게 됩니다.
 
+<br />
+
 > 배열 메서드(**some(), splice()**)를 이용해 조건에 맞는 코드 실행 및 배열 관리
 
 ```javascript
@@ -128,11 +132,11 @@ indexOf(searchElement, fromIndex) 메서드는 찾을 요소(searchElement)와 �
 
 즉, bookList에 indexOf를 이용해 해당 book의 index를 찾아서 splice로 제거하는 방식입니다.
 
-> ```
+<br />
+
 > 객체를 indexOf로 비교하면 객체의 속성 값이 동일하더라도 참조가 다르다면 음수를 반환하는 경우도 있기에 정확한 속성 값을 비교하는 게 안전하다.
 > 또한 배열의 데이터가 객체인 경우는 findIndex()를 이용하는 게 좋다고 한다.
 > findIndex()는 주어진 판별 함수를 이용해 비교하기 때문!
-> ```
 
 ```javascript
 bookDeleteBtn.addEventListener('click', () => {

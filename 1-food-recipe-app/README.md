@@ -159,24 +159,18 @@ foodList.map(async (food) => {
 
 ## Method
 
+```
 > Pattern
->
 > - Event Delegation
->
-> ---
->
+
 > Data
->
 > - fetch()
 > - map()
 > - filter()
 > - includes()
 > - slice()
->
-> ---
->
+
 > DOM
->
 > - createElement()
 > - getElementById()
 > - querySelector()
@@ -187,3 +181,4 @@ foodList.map(async (food) => {
 > - matches()
 > - closest()
 > - replaceChildren()
+```
