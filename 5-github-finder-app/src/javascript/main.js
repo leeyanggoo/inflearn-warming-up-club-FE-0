@@ -1,11 +1,13 @@
 const searchBtn = document.getElementById('search-btn');
 const searchInput = document.getElementById('search-input');
+const debounceInput = document.getElementById('debounce-input');
 const form = document.querySelector('form');
 const url = 'https://api.github.com/users';
 let prevInputValue;
 
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
+
   loadUser(searchInput.value);
 });
 
@@ -91,7 +93,8 @@ function setUserRepos(data) {
   const reposWrap = document.getElementById('repos-wrap');
   reposWrap.replaceChildren();
 
-  for (let i = 0; i < 5; i++) {
+  const repoCount = data.length < 5 ? data.length : 5;
+  for (let i = 0; i < repoCount; i++) {
     const p = document.createElement('p');
     p.className = 'container flex flex-row flex-between';
     const link = document.createElement('a');
@@ -118,4 +121,27 @@ function setUserRepos(data) {
 
     reposWrap.appendChild(p);
   }
+}
+
+// debounce
+debounceInput.addEventListener('input', debounce(loadUser, 1000));
+// debounceInput.addEventListener('input', e => callback(e));
+
+function debounce(callback, delay = 0) {
+  // timer는 부모 함수에서 선언된 지역 변수
+  let timer = null;
+
+  return (arg) => {
+    // 여기서 arg는 input event
+
+    if (timer) {
+      // 이미 타이머가 있는데 또 실행되면 타이머 삭제
+      clearTimeout(timer);
+    }
+
+    // 변수 timer는 부모 함수에서 선언되었지만 내부 함수에서 사용(클로저)
+    timer = setTimeout(() => {
+      callback(arg.target.value);
+    }, delay);
+  };
 }

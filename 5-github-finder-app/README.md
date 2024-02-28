@@ -1,41 +1,21 @@
-#### [인프런 워밍업 클럽 FE 0기] 미션3 - 퀴즈 앱
+#### [인프런 워밍업 클럽 FE 0기] 미션4-2 - GitHubFinder 앱
 
-# 🤔 quiz-app
+# 🔍 github-finder-app
 
-- [Inflearn Blog](https://www.inflearn.com/blogs/1268499)
+- [Inflearn Blog](https://www.inflearn.com/blogs/6914)
 
 ## 개요
 
-- **인프런 워밍업 클럽 FE 0기**의 세 번째 미션인 '퀴즈 앱' 만들기입니다.
-- [따라하며 배우는 자바스크립트](https://www.inflearn.com/course/따라하며-배우는-자바스크립트) 섹션 4(9~17)
+- **인프런 워밍업 클럽 FE 0기**의 네 번째 미션인 'GitHubFinder 앱' 입니다.
+- [따라하며 배우는 자바스크립트](https://www.inflearn.com/course/따라하며-배우는-자바스크립트) 섹션 5(OOP), 섹션 6(비동기)
 
 ## 목표
 
-- **Math.random()** 메서드를 이용해 무작위 문제와 보기 만들기
-- **do while** 문으로 중복된 데이터를 처리하고 오답 생성
-- 배열 메서드(**includes()**, **sort()**)를 이용해 보기 관리
-
-## Method
-
-> Array
->
-> - Array.prototype.includes()
-> - Array.prototype.sort()
->
-> ---
->
-> Loop
->
-> - do while
->
-> ---
->
-> Init
->
-> - IIFE(Immediately Invoked Function Expression)
+- **Fetch API** 를 이용해 깃허브 유저 목록 불러오기
+- **Closure** 를 이용해 Debounce Function 만들기
 
 ## Demo
 
-![Alt text](/3-quiz-app/src/img/quiz-app.gif)
+![Alt text](/5-github-finder-app/src/img/github-finder-app.gif)
 
 Record by [ScreenToGif](https://www.screentogif.com/)
