@@ -123,9 +123,11 @@ Class and Object Constructor Function in JavaScript
 
 얼른 배우고 싶다.
 
-    습관적으로 window.onload나 body 태그에 onload를 사용했었는데, 다른 스터디 러너 분께서 'DOMContentLoaded' 이벤트를 쓰시는걸 보고 슬쩍 배워보았다.
-    - DOMContentLoaded : 이벤트는 HTML의 파싱이 완료되면 발생하며, 스타일시트, 이미지 및 하위 프레임 로드를 기다리지 않습니다.
-    - onload : 속성은 페이지의 모든 자원(이미지, 스크립트, 스타일시트 등)이 다운로드되고 웹 페이지가 완전히 로드되었을 때 발생합니다.
+> ```
+> 습관적으로 window.onload나 body 태그에 onload를 사용했었는데, 다른 스터디 러너 분께서 'DOMContentLoaded' 이벤트를 쓰시는걸 보고 슬쩍 배워보았다.
+> - DOMContentLoaded : 이벤트는 HTML의 파싱이 완료되면 발생하며, 스타일시트, 이미지 및 하위 프레임 로드를 기다리지 않습니다.
+> - onload : 속성은 페이지의 모든 자원(이미지, 스크립트, 스타일시트 등)이 다운로드되고 웹 페이지가 완전히 로드되었을 때 발생합니다.
+> ```
 
 ## Method
 

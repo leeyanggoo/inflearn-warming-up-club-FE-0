@@ -80,6 +80,8 @@ foodNavigation.addEventListener('click', async (event) => {
 
 저는 nav 태그에 이벤트를 등록하고 closest 메서드를 이용해 버튼의 id를 찾는 방법을 사용했습니다.
 
+<br />
+
 > 하위 요소를 제거하고 생성한 요소를 추가하기
 
 ```javascript
