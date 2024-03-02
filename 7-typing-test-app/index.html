@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>⌨️ Typing Test APP</title>
+  <link rel="stylesheet" href="./src/css/style.css" />
+</head>
+
+<body>
+  <div id="wrap" class="flex flex-col flex-center gap-20">
+    <header class="bg-warning-light flex flex-center">
+      <div class="row-container">
+        <h1>⌨️ Typing Test APP</h1>
+      </div>
+    </header>
+    <main class="flex flex-col flex-center gap-20 row-container">
+      <div class="flex flex-row flex-center gap-10 container">
+        <div class="flex flex-col flex-center gap-10 container box-100">
+          <p>ERRORS</p>
+          <strong id="errors-count" class="strong">0</strong>
+        </div>
+        <div class="flex flex-col flex-center gap-10 container box-100">
+          <p>TIME</p>
+          <span class="strong"><strong id="time-count">20</strong>s</span>
+        </div>
+        <div class="flex flex-col flex-center gap-10 container box-100">
+          <p>% ACCURACY</p>
+          <strong id="accuracy-count" class="strong">0</strong>
+        </div>
+        <div id="wpm-wrap" class="flex flex-col flex-center gap-10 container box-100" style="display: none;">
+          <p>WPM</p>
+          <strong id="wpm-count" class="strong">0</strong>
+        </div>
+        <div id="cpm-wrap" class="flex flex-col flex-center gap-10 container box-100" style="display: none;">
+          <p>CPM</p>
+          <strong id="cpm-count" class="strong">0</strong>
+        </div>
+      </div>
+      <hr class="horizon">
+      <div id="example-container" class="container"
+        style="text-align: center; font-size: 1.5rem; font-weight: bold; letter-spacing: 2px; background-color: #ddd;">
+        <p>👇 Click below to start playing!</p>
+      </div>
+      <div class="flex flex-row flex-center" style="width: 100%;">
+        <textarea type="text" style="font-size: 2rem; width: 100%; word-break: break-all;" class="container" rows="5"
+          placeholder="Click here and Game Start!"></textarea>
+      </div>
+      <div id="restart-wrap" class="flex flex-center"></div>
+    </main>
+  </div>
+</body>
+<script type="module" src="./src/javascript/main.js"></script>
+
+</html>
