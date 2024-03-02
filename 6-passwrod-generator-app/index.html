@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Password Genrator</title>
+  <link rel="stylesheet" href="./src/css/style.css" />
+</head>
+
+<body>
+  <div id="wrap" class="flex flex-col">
+    <header class="bg-success-light">
+      <h1>Password Genrator</h1>
+    </header>
+    <main class="flex flex-col gap-20" style="margin: 10px;">
+      <div class="flex flex-row flex-between gap-10 container">
+        <p id="generator-result" style="word-break: break-all;"></p>
+        <!-- <hr class="vertical"> -->
+        <button class="icon-btn bg-success-light" id="copy-btn" disabled>copy!</button>
+      </div>
+      <hr class="horizon">
+      <form action="" class="flex flex-col gap-20">
+        <input type="number" placeholder="Length" id="password-length" required min="5" max="70" disabled>
+        <div class="flex flex-col gap-10">
+          <p>포함할 문자:</p>
+          <div class="flex flex-row gap-10">
+            <input type="checkbox" id="numbers">
+            <label for="numbers">Numbers(0-9)</label>
+          </div>
+          <div class="flex flex-row gap-10">
+            <input type="checkbox" id="small-letters">
+            <label for="small-letters">Small Letters(a-z)</label>
+          </div>
+          <div class="flex flex-row gap-10">
+            <input type="checkbox" id="capital-letters">
+            <label for="capital-letters">Capital Letters(A-Z)</label>
+          </div>
+          <div class="flex flex-row gap-10">
+            <input type="checkbox" id="symbols">
+            <label for="s ymbols">Symbols(@,!,#,$,%)</label>
+          </div>
+        </div>
+        <button type="submit" id="genrator-btn" disabled class="bg-success-light">Genrate!</button>
+      </form>
+      <div class="container" style="padding: 0;">
+        <ul class="flex flex-col gap-10">
+          <li>Min Length : 5</li>
+          <li>Max Length : 70</li>
+          <li>Strong Paswword : 10~16</li>
+        </ul>
+      </div>
+    </main>
+  </div>
+</body>
+<script type="module" src="./src/javascript/main.js"></script>
+
+</html>
