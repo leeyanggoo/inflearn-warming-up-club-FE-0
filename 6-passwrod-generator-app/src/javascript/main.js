@@ -20,11 +20,11 @@ const copyBtn = document.getElementById('copy-btn');
 }
 // index를 이용한 0~9 배열 [0, 1, 2, ...]
 const numbersArray = Array.from({ length: 10 }, (_, index) => index);
-// 유니코드를 이용한 소문자 배열 [a, b, c, ...]
+// UTF-16를 이용한 소문자 배열 [a, b, c, ...]
 const smallLettersArray = Array.from({ length: 26 }, (_, index) =>
   String.fromCharCode(97 + index)
 );
-// 유니코드를 이용한 대문자 배열 [A, B, C, ...]
+// UTF-16를 이용한 대문자 배열 [A, B, C, ...]
 const capitalLettersArray = Array.from({ length: 26 }, (_, index) =>
   String.fromCharCode(65 + index)
 );

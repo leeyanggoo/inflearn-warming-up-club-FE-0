@@ -79,11 +79,16 @@ function gameStart() {
 function makeExample() {
   exampleContainer.replaceChildren();
 
-  examples[exampleIndex].split('').forEach((char) => {
-    const span = document.createElement('span');
-    span.textContent = char;
-    exampleContainer.appendChild(span);
-  });
+  // https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/split#%EA%B5%AC%EB%AC%B8
+  // String.split('') better than [...String] or Array.from(String)
+  // better than grapheme-splitter library
+  Array.from(examples[exampleIndex])
+    .split('')
+    .forEach((char) => {
+      const span = document.createElement('span');
+      span.textContent = char;
+      exampleContainer.appendChild(span);
+    });
 
   exampleIndex++;
 
