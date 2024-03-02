@@ -15,14 +15,20 @@ const checkSymbols = document.getElementById('symbols');
 const generatorResult = document.getElementById('generator-result');
 const copyBtn = document.getElementById('copy-btn');
 
-// array of characters
-const numbersArray = Array.from({ length: 10 }, (_, index) => index); // index를 이용한 0~9 배열
+{
+  /* array of characters */
+}
+// index를 이용한 0~9 배열 [0, 1, 2, ...]
+const numbersArray = Array.from({ length: 10 }, (_, index) => index);
+// 유니코드를 이용한 소문자 배열 [a, b, c, ...]
 const smallLettersArray = Array.from({ length: 26 }, (_, index) =>
   String.fromCharCode(97 + index)
-); // ascii code를 이용한 소문자 배열
+);
+// 유니코드를 이용한 대문자 배열 [A, B, C, ...]
 const capitalLettersArray = Array.from({ length: 26 }, (_, index) =>
   String.fromCharCode(65 + index)
 );
+
 const symbolsArray = ['@', '!', '#', '$', '%'];
 
 form.onsubmit = function (e) {
@@ -57,10 +63,6 @@ form.onsubmit = function (e) {
       password += resultArray[randomIndex];
     }
   } while (
-    // (requiredNumbers && !/[0-9]/.test(password)) ||
-    // (requiredSmallLetters && !/[a-z]/.test(password)) ||
-    // (requiredCapitalLetters && !/[A-Z]/.test(password)) ||
-    // (requiredSymbols && !/[!@#$%]/.test(password))
     (requiredNumbers &&
       !password
         .split('')
@@ -71,6 +73,12 @@ form.onsubmit = function (e) {
       !password.split('').some((char) => capitalLettersArray.includes(char))) ||
     (requiredSymbols &&
       !password.split('').some((char) => symbolsArray.includes(char)))
+
+    // 정규 표현식으로 검사
+    // (requiredNumbers && !/[0-9]/.test(password)) ||
+    // (requiredSmallLetters && !/[a-z]/.test(password)) ||
+    // (requiredCapitalLetters && !/[A-Z]/.test(password)) ||
+    // (requiredSymbols && !/[!@#$%]/.test(password))
   );
 
   generatorResult.textContent = password;

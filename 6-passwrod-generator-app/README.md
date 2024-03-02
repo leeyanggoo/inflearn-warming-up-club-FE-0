@@ -1,4 +1,4 @@
-#### [인프런 워밍업 클럽 FE 0기] 미션4-2 - GitHubFinder 앱
+#### [인프런 워밍업 클럽 FE 0기] 미션5 - 비밀번호 생성 앱
 
 # 🔐 Password Genrator
 
@@ -17,103 +17,131 @@ Record by [ScreenToGif](https://www.screentogif.com/)
 
 ## 목표
 
-- **Fetch API** 를 이용해 깃허브 유저 목록 불러오기
-- **Closure** 를 이용해 Debounce Function 만들기
+- **Array.from, fromCharCode()** 메서드를 이용해 숫자, 소문자, 대문자 배열 생성
+- **동적 변수** 를 이용해 DOM 요소 조작 및 비밀번호 생성하기
 
 ## 구현
 
-> **Fetch API 를 이용해 깃허브 유저 목록 불러오기**
+> **Array.from, fromCharCode()** 메서드를 이용해 숫자, 소문자, 대문자 배열 생성
 
 ```javascript
-async function loadUser(input) {
-  prevInputValue = input;
+// index를 이용한 0~9 배열 [0, 1, 2, ...]
+const numbersArray = Array.from({ length: 10 }, (_, index) => index);
+// 유니코드를 이용한 소문자 배열 [a, b, c, ...]
+const smallLettersArray = Array.from({ length: 26 }, (_, index) =>
+  String.fromCharCode(97 + index)
+);
+// 유니코드를 이용한 대문자 배열 [A, B, C, ...]
+const capitalLettersArray = Array.from({ length: 26 }, (_, index) =>
+  String.fromCharCode(65 + index)
+);
 
-  try {
-    // const response = await fetch('./src/javascript/user.json');
-    const response = await fetch(`${url}/${input}`);
+const symbolsArray = ['@', '!', '#', '$', '%'];
+```
 
-    if (!response.ok) {
-      throw new Error('Failed to fetch user json');
+`Array.from(arrayLike, mapFn, thisArg)` 메서드는 세 개의 인자를 받는다.
+
+첫 번째 인자는 순회가 가능한 유사 배열 객체(arrayLike), 두 번째 인자는 배열의 각 요소에 호출할 함수(mapFn), 세 번째 인자로 mapFn 함수 실행 시에 사용할 this(thisArg) 값을 받는다.
+
+여기서 유사 배열 객체의 속성인 'length'를 이용해 원하는 길이를 지정하고 두 번째 함수에서 인덱스를 이용해 각 요소의 값을 인덱스로 지정하면 0부터 length-1의 값을 갖는 배열을 만들 수 있다.
+
+`String.fromCharCode(num1[, ...[, numN]])` 메서드는 UTF-16 코드 유닛의 시퀀스로부터 문자열을 생성해 반환한다.
+
+알파벳은 총 25개이며, 알파벳 소문자의 유니코드는 97부터 122까지, 대문자는 65부터 90까지이므로 길이와 index를 각각 알맞게 설정해주면 된다.
+
+<br />
+
+> **동적 변수** 를 이용해 DOM 요소 조작 및 비밀번호 생성하기
+
+```javascript
+function isChecked() {
+  const checkboxes = form.querySelectorAll('input[type="checkbox"]');
+  let anyCheck = false;
+
+  checkboxes.forEach((checkbox) => {
+    if (checkbox.checked) {
+      anyCheck = true;
     }
+  });
 
-    const json = await response.json();
+  return anyCheck;
+}
+```
 
-    setUserAvatar(json);
-    setUserInfo(json);
+`<form>` 요소 하위의 'checkbox' 타입인 `<input>` 요소를 모두 선택하고, 'checked' 속성을 확인해 하나라도 true라면 'anyCheck'라는 동적 변수에 true를 할당한다.
 
-    await loadUserRepos(json);
-  } catch (error) {
-    console.error(error);
+```javascript
+form.addEventListener('click', (e) => {
+  isChecked()
+    ? passwordLength.removeAttribute('disabled')
+    : passwordLength.setAttribute('disabled', '');
+});
+```
+
+이렇게 `isChecked()` 함수를 실행해서 체크 여부를 확인하고 입력 `<input>` 요소의 속성을 변경한다.
+
+```javascript
+const resultArray = [];
+let password = '';
+
+let requiredNumbers = false;
+// ...
+
+if (checkNumbers.checked) {
+  resultArray.push(...numbersArray);
+  requiredNumbers = true;
+}
+// ...
+```
+
+생성할 비밀번호에서 반드시 포함해야 하는 속성을 확인하는 required 변수를 만들고 `'input[type="checkbox"]'` 요소의 각 checked 값을 확인해 true로 변경한다.
+
+```javascript
+do {
+  for (let i = 0; i < passwordLength.value; i++) {
+    const randomIndex = Math.floor(Math.random() * resultArray.length);
+    password += resultArray[randomIndex];
   }
-}
+} while (
+  (requiredNumbers &&
+    !password.split('').some((char) => numbersArray.includes(Number(char)))) ||
+  (requiredSmallLetters &&
+    !password.split('').some((char) => smallLettersArray.includes(char))) ||
+  (requiredCapitalLetters &&
+    !password.split('').some((char) => capitalLettersArray.includes(char))) ||
+  (requiredSymbols &&
+    !password.split('').some((char) => symbolsArray.includes(char)))
+
+  // 정규 표현식으로 검사
+  // (requiredNumbers && !/[0-9]/.test(password)) ||
+  // (requiredSmallLetters && !/[a-z]/.test(password)) ||
+  // (requiredCapitalLetters && !/[A-Z]/.test(password)) ||
+  // (requiredSymbols && !/[!@#$%]/.test(password))
+);
 ```
 
-fetch() 메서드의 응답은 HTTP 응답 전체를 나타내는 'response' 객체를 반환한다.
+for문을 이용해 사용자가 입력한 비밀번호의 자릿수(passwordLength.value)만큼 비밀번호를 생성한다.
 
-response의 ok 속성은 응답의 성공 여부를 불리언 값으로 가지고 있다.
+생성한 비밀번호를 split() 메서드를 이용해 문자마다 나눈 뒤 배열로 만들고, 문자를 하나하나 기존에 생성한 배열의 요소와 비교한다.
 
-따라서 응답이 성공이 아닐 경우 오류 객체(new Error())를 반환하고 catch 문으로 Promise의 오류를 처리한다.
+만약 생성한 비밀번호에 반드시 포함해야 하는 속성이 없다면(required가 true인데 다음 조건식을 만족하지 않는 경우) 다시 생성한다.
 
-응답에 성공한 response 객체를 JSON으로 사용하기 위해선 json() 메서드를 이용해 파싱해야 한다.
-
-<br />
-
-> **Closure** 를 이용해 Debounce Function 만들기
-
-```javascript
-// debounce
-debounceInput.addEventListener('input', debounce(loadUser, 1000));
-// debounceInput.addEventListener('input', e => callback(e));
-
-function debounce(callback, delay = 0) {
-  // timer는 부모 함수에서 선언된 지역 변수
-  let timer = null;
-
-  return (arg) => {
-    // 여기서 arg는 input event
-
-    if (timer) {
-      // 이미 타이머가 있는데 또 실행되면 타이머 삭제
-      clearTimeout(timer);
-    }
-
-    // 변수 timer는 부모 함수에서 선언되었지만 내부 함수에서 사용(클로저)
-    timer = setTimeout(() => {
-      callback(arg.target.value);
-    }, delay);
-  };
-}
-```
-
-`<input>` 요소의 'input' 이벤트는 요소의 value가 변경될 때마다 발생한다.
-
-만약 사용자가 입력할 때마다 서버에 데이터를 요청한다면 서버의 부하가 커지기 때문에 좋은 방법은 아니다.
-
-이럴 때 사용자의 입력이 끝난 뒤 마지막 value를 이용해 서버로 요청하는 게 효율적인 방법이라 할 수 있다.
-
-함수의 실행 요청이 반복될 때 마지막 요청만으로 실행하는 걸 '디바운싱(debouncing)'이라고 부른다.
-
-debounce 함수는 인자로 실행할 함수를 받고 자식 함수를 반환한다.
-
-부모 함수인 debounce 함수에서 선언한 변수(timer)를 자식 함수에서 사용할 수 있는 클로저(Closure)를 이용해 자식 함수의 setTimeout() 메서드의 반환 값인 'timeoutID'를 할당한다.
-
-변수 'timer'에 할당한 timeoutID를 이용해 setTimeout() 메서드의 지연 시간(delay)이 종료되기 전에 요청이 들어왔다면 이전에 생성한 타이머를 clearTimeout() 메서드를 이용해 종료하고 다시 타이머를 할당한다.
-
-이렇게 delay로 설정한 시간 이내에 사용자의 입력이 없을 경우 API 요청 함수를 실행하게 된다.
-
-<br />
-
-> ```
-> 반복적인 함수의 실행을 다루는 방법으로 디바운싱(debouncing)와 쓰로틀링(throttling)이 있다.
-> 여러 변수를 고려해 'lodash' 라이브러리의 debounce를 많이 사용한다.
-> ```
+이를 좀 더 쉽게 검사하기 위한 정규 표현식도 있지만, 모른다는 가정 하에(잘 모르기도 했지만 😂) 구현을 해보려 했다.
 
 ## 회고
 
-이번 미션은 debounce가 반환하는 자식 함수의 인자(argument)가 어떤 타입인지 알기 때문에 callback 함수에 전달하는 인자를 수정해서 미숙한 debounce 함수라고 볼 수 있다.
+다양한 플랫폼에서 회원가입과 로그인은 필수적인 사항일 텐데, 여기서 사용하는 검사식은 플랫폼만큼이나 다양하다고 들었다.
 
-늘 라이브러리를 통해 사용하던 함수를 만들려고 하니 모르는 것도 많고, 고려해야 할 부분이 많다는 걸 알게 됐다.
+왜냐하면 이 부분은 보안과 연결되어 있어서 꽤 민감하기 때문이다.
 
-자바스크립트의 기초를 잘 알아야 이런 라이브러리 메서드의 원리를 이해하기도 쉽고, 커스텀하기에 수월한 것 같다.
+코드를 작성하다 보니 비밀번호를 무작위로 생성하는 것보다 조건을 만들고 통과시키는 게 더 어려웠다.
 
-(외의로 GitHub의 API 요청이 API key 없이도 되어서 신기했고, 그 덕에 조금은 수월했다. 아주 조금... 😵)
+특히 input의 checked 여부에 따라 결과에 반드시 포함시켜야 한다고 작성하는 부분이 꽤 오래 걸렸다.
+
+처음엔 전체가 아니라 하나하나 만들 때마다 검사했지만, while의 조건에서 OR( || ) 연산자로 검사하다 보니 무한 루프에 빠져버렸다.
+
+결국 전체를 비교하고 다시 만드는 코드로 변경했지만 뭔가 좋은 방법이 아닌 것 같아서 찜찜하다. 🤔
+
+물론 보통은 생성이 아니라 사용자가 입력한 값을 비교하겠지만...
+
+여러 변수와 다양한 조건을 고려해서 효율적인 코드를 작성할 수 있는 개발자가 되고 싶다!
