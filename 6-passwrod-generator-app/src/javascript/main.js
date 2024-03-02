@@ -16,7 +16,7 @@ const generatorResult = document.getElementById('generator-result');
 const copyBtn = document.getElementById('copy-btn');
 
 // array of characters
-const numbersArray = Array.from({ length: 10 }, (value, index) => index); // index를 이용한 0~9 배열
+const numbersArray = Array.from({ length: 10 }, (_, index) => index); // index를 이용한 0~9 배열
 const smallLettersArray = Array.from({ length: 26 }, (_, index) =>
   String.fromCharCode(97 + index)
 ); // ascii code를 이용한 소문자 배열

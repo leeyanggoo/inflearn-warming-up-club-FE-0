@@ -1,19 +1,19 @@
 #### [인프런 워밍업 클럽 FE 0기] 미션4-2 - GitHubFinder 앱
 
-# 🔍 github-finder-app
+# 🔐 Password Genrator
 
-- [Inflearn Blog](https://www.inflearn.com/blogs/6914)
+- [Inflearn Blog](https://www.inflearn.com/blogs/6950)
 
 ## Demo
 
-![Alt text](/5-github-finder-app/src/img/github-finder-app.gif)
+![Alt text](/6-passwrod-generator-app/src/img/passwrod-generator-app.gif)
 
 Record by [ScreenToGif](https://www.screentogif.com/)
 
 ## 개요
 
-- **인프런 워밍업 클럽 FE 0기**의 네 번째 미션인 'GitHubFinder 앱' 입니다.
-- [따라하며 배우는 자바스크립트](https://www.inflearn.com/course/따라하며-배우는-자바스크립트) 섹션 5(OOP), 섹션 6(비동기)
+- **인프런 워밍업 클럽 FE 0기**의 다섯 번째 미션인 '비밀번호 생성 앱' 입니다.
+- [따라하며 배우는 자바스크립트](https://www.inflearn.com/course/따라하며-배우는-자바스크립트) 섹션 7~8(Iterator, Generator, Design Pattern)
 
 ## 목표
 
