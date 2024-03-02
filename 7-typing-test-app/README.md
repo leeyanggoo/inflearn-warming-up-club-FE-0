@@ -55,7 +55,7 @@ function finishGame() {
 }
 ```
 
-'timer'라는 변수를 `gameStart()` 함수 외부에 생성하고(다른 함수에서도 사용하기 위해) 함수 내부에서 `setInterval()` 메서드를 할당한다.
+'timer'라는 변수를 `gameStart()` 함수 외부에 생성하고(다른 함수에서도 사용하기 위해) 함수 내부에서 setInterval() 메서드를 할당한다.
 
 `setInterval(func, delay)` 메서드는 실행할 함수(func)와 지연 시간(delay)을 인자로 받는다.
 
@@ -97,14 +97,17 @@ function makeExample() {
 
 처음엔 문자열의 각각 문자를 배열의 요소처럼 다루기 위해서 `split()` 메서드를 이용했다.
 
+<br />
+
 ### ⚠️ `split('')`은 문자 단위로 나누지 않는다!
 
-하지만 이 `split()` 메서드에서 공백을 구분자로 하는 게 큰 위험이 있다는 걸 [MDN 문서]('https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/split#%EA%B5%AC%EB%AC%B8')를 통해 확인했다.
+하지만 이 `split()` 메서드에서 공백을 구분자로 하는 게 큰 위험이 있다는 걸 [MDN 문서](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/split#%EA%B5%AC%EB%AC%B8)를 통해 확인했다.
 
 ```javascript
 console.log('𝟘𝟙𝟚𝟛'.split('')); // ["�","�","�","�","�","�","�","�"]
 console.log('😎😜🙃'.split('')); // ["�", "�", "�", "�", "�", "�"]
 console.log('अनुच्छेद'.split('')); // ["अ", "न", "ु", "च", "्", "छ", "े", "द"]
+
 console.log('Z͑ͫ̓ͪ̂ͫ̽͏̴̙̤̞͉͚̯̞̠͍A̴̵̜̰͔ͫ͗͢L̠ͨͧͩ͘G̴̻͈͍͔̹̑͗̎̅͛́Ǫ̵̹̻̝̳͂̌̌͘!͖̬̰̙̗̿̋ͥͥ̂ͣ̐́́͜͞'.split('')); // ["Z","͑", "ͫ", "̓", ... ]
 ```
 
@@ -114,7 +117,7 @@ console.log('Z͑ͫ̓ͪ̂ͫ̽͏̴̙̤̞͉͚̯̞̠͍A̴̵̜̰͔ͫ͗͢L̠ͨͧͩ͘G�
 
 즉 `split('')`은 이 써로게이트 페어가 망가지면서 원하는 결과를 얻지 못하게 된다.
 
-이런 다양한 특수문자와 흰두어 같은 다른 나라의 언어를 제대로 나누기 위한 ['grapheme-splitter' 라이브러리]('https://github.com/orling/grapheme-splitter')도 있다.
+이런 다양한 특수문자와 흰두어 같은 다른 나라의 언어를 제대로 나누기 위한 ['grapheme-splitter' 라이브러리](https://github.com/orling/grapheme-splitter)도 있다.
 
 소스를 보면 생각보다 고려해야 하는 게 많아서 엄청난 코드 양을 볼 수 있다.
 
