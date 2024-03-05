@@ -2,7 +2,7 @@
 
 # ⌨️ Typing Test APP
 
-- [Inflearn Blog](https://www.inflearn.com/blogs/6950)
+- [Inflearn Blog](https://www.inflearn.com/blogs/6967)
 
 ## Demo
 
@@ -25,7 +25,7 @@ Record by [ScreenToGif](https://www.screentogif.com/)
 > **setInterval()** 메서드를 이용해 타이머 만들기
 
 ```javascript
-textarea.addEventListener('focus', gameStart);
+textarea.addEventListener("focus", gameStart);
 
 let timer = null;
 
@@ -78,7 +78,7 @@ function makeExample() {
   // String.split('') better than [...String] or Array.from(String)
   // better than grapheme-splitter library
   Array.from(examples[exampleIndex]).forEach((char) => {
-    const span = document.createElement('span');
+    const span = document.createElement("span");
     span.textContent = char;
     exampleContainer.appendChild(span);
   });
@@ -104,11 +104,11 @@ function makeExample() {
 하지만 이 `split()` 메서드에서 공백을 구분자로 하는 게 큰 위험이 있다는 걸 [MDN 문서](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/split#%EA%B5%AC%EB%AC%B8)를 통해 확인했다.
 
 ```javascript
-console.log('𝟘𝟙𝟚𝟛'.split('')); // ["�","�","�","�","�","�","�","�"]
-console.log('😎😜🙃'.split('')); // ["�", "�", "�", "�", "�", "�"]
-console.log('अनुच्छेद'.split('')); // ["अ", "न", "ु", "च", "्", "छ", "े", "द"]
+console.log("𝟘𝟙𝟚𝟛".split("")); // ["�","�","�","�","�","�","�","�"]
+console.log("😎😜🙃".split("")); // ["�", "�", "�", "�", "�", "�"]
+console.log("अनुच्छेद".split("")); // ["अ", "न", "ु", "च", "्", "छ", "े", "द"]
 
-console.log('Z͑ͫ̓ͪ̂ͫ̽͏̴̙̤̞͉͚̯̞̠͍A̴̵̜̰͔ͫ͗͢L̠ͨͧͩ͘G̴̻͈͍͔̹̑͗̎̅͛́Ǫ̵̹̻̝̳͂̌̌͘!͖̬̰̙̗̿̋ͥͥ̂ͣ̐́́͜͞'.split('')); // ["Z","͑", "ͫ", "̓", ... ]
+console.log("Z͑ͫ̓ͪ̂ͫ̽͏̴̙̤̞͉͚̯̞̠͍A̴̵̜̰͔ͫ͗͢L̠ͨͧͩ͘G̴̻͈͍͔̹̑͗̎̅͛́Ǫ̵̹̻̝̳͂̌̌͘!͖̬̰̙̗̿̋ͥͥ̂ͣ̐́́͜͞".split("")); // ["Z","͑", "ͫ", "̓", ... ]
 ```
 
 이런 현상이 발생하는 이유는 `split()` 메서드의 구분자가 빈 문자열인 경우, 전체 문자열을 UTF-16으로 인코딩하기 때문이라고 한다.

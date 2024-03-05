@@ -33,7 +33,7 @@ function App() {
   }, [budgetList]);
 
   return (
-    <div className="App w-dvw h-dvh flex items-center justify-center bg-blue-100">
+    <div className="flex items-center justify-center bg-blue-100 App w-dvw h-dvh">
       <div className="container flex flex-col justify-center gap-5">
         <header className="flex flex-row items-end justify-between">
           <div className="flex flex-row items-end gap-2">
@@ -47,7 +47,7 @@ function App() {
             Total Cost : {totalCost()} ₩
           </strong>
         </header>
-        <main className="bg-white p-5 flex flex-col gap-5">
+        <main className="flex flex-col gap-5 p-5 bg-white">
           <Form
             inputStyle={inputStyle}
             buttonStyle={buttonStyle}

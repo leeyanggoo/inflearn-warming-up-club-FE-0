@@ -55,12 +55,12 @@ const Form = ({
   const isFormFilled = budgetName && budgetCost ? true : false;
 
   return (
-    <div className="flex flex-col justify-center items-start gap-5 w-full">
-      <div className="flex flex-row justify-between items-center gap-5 w-full">
-        <div className="w-1/2 flex flex-col gap-3">
+    <div className="flex flex-col items-start justify-center w-full gap-5">
+      <div className="flex flex-row items-center justify-between w-full gap-5">
+        <div className="flex flex-col w-1/2 gap-3">
           <label
             htmlFor="budget-name"
-            className="text-gray-700 text-lg font-semibold"
+            className="text-lg font-semibold text-gray-700"
           >
             Name
           </label>
@@ -74,10 +74,10 @@ const Form = ({
             ref={budgetNameRef}
           />
         </div>
-        <div className="w-1/2 flex flex-col gap-3">
+        <div className="flex flex-col w-1/2 gap-3">
           <label
             htmlFor="budget-cost"
-            className="text-gray-700 text-lg font-semibold"
+            className="text-lg font-semibold text-gray-700"
           >
             Cost
           </label>
