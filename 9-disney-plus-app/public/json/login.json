@@ -1,0 +1,22 @@
+[
+  {
+    "backdrop_path": "/images/login_banner-1.jpg",
+    "name": "로얄로더",
+    "info": "2월 28일 스트리밍"
+  },
+  {
+    "backdrop_path": "/images/login_banner-2.jpg",
+    "name": "원더풀 월드",
+    "info": "3월 1일 스트리밍"
+  },
+  {
+    "backdrop_path": "/images/login_banner-3.jpg",
+    "name": "킬러들의 쇼핑몰",
+    "info": "모든 에피소드 스트리밍"
+  },
+  {
+    "backdrop_path": "/images/login_banner-4.jpg",
+    "name": "30일",
+    "info": "지금 스트리밍 중"
+  }
+]
