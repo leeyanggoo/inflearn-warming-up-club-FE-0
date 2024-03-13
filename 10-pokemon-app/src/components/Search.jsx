@@ -16,7 +16,7 @@ const Search = () => {
         type='text'
         className='w-1/2 px-5 py-4 rounded-lg shadow-md'
         value={searchValue}
-        onChange={handleSearch}
+        onChange={e => handleSearch(e)}
         placeholder='Enter the name of the Pokemon you are looking for'
       />
     </div>

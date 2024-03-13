@@ -31,7 +31,7 @@ const SearchPage = () => {
 
   return (
     <section className='flex items-center justify-center'>
-      <Search />
+      {/* <Search /> */}
       {Object.keys(searchResults).length > 0 ? (
         <div className='w-[170px]'>
           <Card data={searchResults} />

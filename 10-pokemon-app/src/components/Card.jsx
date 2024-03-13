@@ -11,7 +11,7 @@ const Card = memo(function Card({ data }) {
 
   return (
     <div className='flex flex-col justify-between w-full h-full overflow-hidden text-sm bg-gray-800 rounded-xl'>
-      <Link to={`search/${id}`} state={data}>
+      <Link to={`/search/${id}`}>
         <div className={`text-right py-2 px-3`} style={{ color: color }}>
           {`#${String(id).padStart(3, '0')}`}
         </div>

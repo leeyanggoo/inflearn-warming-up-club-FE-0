@@ -18,8 +18,8 @@ function App() {
         <Route path='/' element={<Layout />}>
           <Route index element={<MainPage />} />
           <Route path='search' element={<SearchPage />} />
-          <Route path='search/:pokemonId' element={<DetailPage />} />
         </Route>
+        <Route path='search/:pokemonId' element={<DetailPage />} />
       </Routes>
     </div>
   );

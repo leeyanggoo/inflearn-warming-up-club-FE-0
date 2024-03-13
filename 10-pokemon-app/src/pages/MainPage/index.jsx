@@ -11,7 +11,7 @@ const MainPage = () => {
 
   return (
     <>
-      <Search />
+      {/* <Search /> */}
       <List pageParam={pageParam} />
       <button
         onClick={handleParams}

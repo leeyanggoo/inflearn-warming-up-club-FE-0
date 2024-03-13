@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 const instance = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL,
@@ -16,7 +16,14 @@ export const getPokemonList = async (pageParam = 0) => {
   return data;
 };
 
-export const getPokemonById = async (id) => {
+export const getPokemonById = async id => {
   const { data } = await instance.get(`/pokemon/${id}`);
   return data;
+};
+
+export const getDamageRelationsByType = async type => {
+  const { data } = await instance.get(`/type/${type}`);
+  const { damage_relations } = data;
+
+  return damage_relations;
 };
