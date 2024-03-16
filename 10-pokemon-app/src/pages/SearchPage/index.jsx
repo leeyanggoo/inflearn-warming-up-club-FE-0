@@ -11,14 +11,14 @@ const SearchPage = () => {
 
   let query = useQuery();
   const searchTerm = query.get('q');
-  const debouncedSearchTerm = useDebounce(searchTerm, 1000);
+  // const debouncedSearchTerm = useDebounce(searchTerm, 1000);
 
   useEffect(() => {
-    if (debouncedSearchTerm) {
-      fetchSearchPokemon(debouncedSearchTerm);
+    if (searchTerm) {
+      fetchSearchPokemon(searchTerm);
     }
     return () => setSearchResults({});
-  }, [debouncedSearchTerm]);
+  }, [searchTerm]);
 
   const fetchSearchPokemon = async searchTerm => {
     try {
@@ -37,7 +37,7 @@ const SearchPage = () => {
           <Card data={searchResults} />
         </div>
       ) : (
-        <p>A Pokémon called {debouncedSearchTerm} has not been born yet.</p>
+        <p>A Pokémon called {searchTerm} has not been born yet.</p>
       )}
     </section>
   );

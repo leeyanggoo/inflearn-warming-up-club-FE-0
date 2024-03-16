@@ -6,6 +6,8 @@ import { getColor } from '../../api/colors';
 import { getDamageRelationsByType, getPokemonById } from '../../api/axios';
 import useOnClickOutside from '../../hooks/useOnClickOutside';
 import Header from '../../components/Header';
+import useLoading from '../../hooks/useLoading';
+import isLoading from '../../hooks/useLoading';
 
 const DetailPage = () => {
   const navegate = useNavigate();
@@ -14,6 +16,7 @@ const DetailPage = () => {
   const [damageData, setDamageData] = useState({});
   const [show, setShow] = useState(false);
   const damageModalRef = useRef();
+  const containerRef = useRef();
 
   useOnClickOutside(damageModalRef, () => {
     setShow(false);
@@ -21,6 +24,7 @@ const DetailPage = () => {
 
   const getData = async id => {
     try {
+      isLoading({ element: containerRef.current, state: false });
       const data = await getPokemonById(id);
       setPokemonData(data);
 
@@ -83,6 +87,7 @@ const DetailPage = () => {
               rgb(31 41 55) 100%
             )`,
           }}
+          ref={containerRef}
         >
           {show ? (
             <div className='flex items-center justify-center w-full h-full font-bold text-black capitalize bg-gray-700'>
